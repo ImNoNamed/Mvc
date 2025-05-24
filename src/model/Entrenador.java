@@ -10,7 +10,7 @@ public class Entrenador {
 
     public Entrenador(String nombre) {
         this.nombre = nombre;
-        this.equipo = generarEquipoAleatorio();
+        this.equipo = new ArrayList<>();
     }
 
     public String getNombre() {
@@ -21,38 +21,13 @@ public class Entrenador {
         return equipo;
     }
 
-    private ArrayList<Pokemon> generarEquipoAleatorio() {
-        Random random = new Random();
-        ArrayList<Pokemon> equipoAleatorio = new ArrayList<>();
-        ArrayList<Pokemon> pokemonesDisponibles = PokemonesPro.obtenerPokemonesDisponibles();
-
-        if (pokemonesDisponibles.isEmpty()) {
-            throw new IllegalStateException("No hay Pokémon disponibles para formar un equipo.");
-        }
-
-        while (equipoAleatorio.size() < 3) {
-            Pokemon pokemonAleatorio = pokemonesDisponibles.get(random.nextInt(pokemonesDisponibles.size()));
-            if (!equipoAleatorio.contains(pokemonAleatorio)) {
-                asignarAtaques(pokemonAleatorio);  // 👈 Asignamos ataques
-                equipoAleatorio.add(pokemonAleatorio);
-            }
-        }
-
-        return equipoAleatorio;
-    }
-
-    // Método para asignar ataques aleatorios a un pokémon
-    private void asignarAtaques(Pokemon pokemon) {
-        ArrayList<Ataque> ataquesDisponibles = AtaquesDisponibles.obtenerAtaquesDisponibles();
-        Collections.shuffle(ataquesDisponibles);
-    
-        for (int i = 0; i < 4 && i < ataquesDisponibles.size(); i++) {
-            Ataque original = ataquesDisponibles.get(i);
-            Ataque copia = new Ataque(original.getdamagename(), original.getdamagetype(), original.getdamagepotency());
-            pokemon.addAttack(copia);
+    public void agregarPokemon(Pokemon pokemon) {
+        if (equipo.size() < 3) {
+            equipo.add(pokemon);
+        } else {
+            throw new IllegalStateException("El equipo ya tiene 3 Pokémon.");
         }
     }
-    
 
     public Pokemon obtenerPokemonActivo() {
         for (Pokemon p : equipo) {
@@ -63,17 +38,33 @@ public class Entrenador {
         return null;
     }
 
-    public boolean tienePokemonsVivos() {
-        for (Pokemon p : equipo) {
-            if (p.getHealthPoints() > 0) {
-                return true;
-            }
-        }
-        return false;
+    public void eliminarPokemonActivo() {
+        equipo.removeIf(p -> p.getHealthPoints() <= 0);
     }
 
-    public void agregarPokemon(Pokemon pokemon1) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'agregarPokemon'");
+    public boolean tienePokemonVivos() {
+        return equipo.stream().anyMatch(p -> p.getHealthPoints() > 0);
+    }
+
+    public void generarEquipoAleatorio() {
+        ArrayList<Pokemon> pokemonesDisponibles = PokemonesPro.obtenerPokemonesDisponibles();
+        Collections.shuffle(pokemonesDisponibles);
+
+        while (equipo.size() < 3) {
+            Pokemon pokemonAleatorio = pokemonesDisponibles.remove(0);
+            asignarAtaques(pokemonAleatorio);
+            equipo.add(pokemonAleatorio);
+        }
+    }
+
+    private void asignarAtaques(Pokemon pokemon) {
+        ArrayList<Ataque> ataquesDisponibles = AtaquesDisponibles.obtenerAtaquesDisponibles();
+        Collections.shuffle(ataquesDisponibles);
+
+        for (int i = 0; i < 4 && i < ataquesDisponibles.size(); i++) {
+            Ataque original = ataquesDisponibles.get(i);
+            Ataque copia = new Ataque(original.getdamagename(), original.getdamagetype(), original.getdamagepotency());
+            pokemon.addAttack(copia);
+        }
     }
 }

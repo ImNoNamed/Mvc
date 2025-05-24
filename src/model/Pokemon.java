@@ -85,4 +85,10 @@ public class Pokemon {
     public void useAttack(Ataque ataque, Pokemon enemy) {
         ataque.applyAttack(enemy);
     }
+
+    public void recibirAtaque(Ataque ataque, Pokemon atacante) {
+        int daño = ataque.calculateDamage(this.type, this.defense);
+        this.subtractHp(daño);
+        System.out.println(atacante.getName() + " usó " + ataque.getdamagename() + " contra " + this.getName() + ". Hizo " + daño + " de daño.");
+    }
 }

@@ -49,16 +49,22 @@ public class Ataque {
     }
 
     // Calcula el daño con o sin ventaja de tipo
-    public int calculateDamage(String enemytype, int enemydefense) {
-        double base = 1.0;
+    public int calculateDamage(String enemyType, int enemyDefense) {
+        double baseMultiplier = 1.0;
 
-        if (advantage(enemytype)) {
-            base += 0.3;
+        // Verificar ventaja de tipo
+        if (advantage(enemyType)) {
+            baseMultiplier += 0.3; // Ventaja de tipo
         }
 
-        int rawDamage = (int) (damagepotency * base);
-        int finalDamage = rawDamage - enemydefense;
-        return Math.max(finalDamage, 0);
+        // Calcular daño bruto
+        int rawDamage = (int) (damagepotency * baseMultiplier);
+
+        // Reducir daño por la defensa del enemigo
+        int finalDamage = rawDamage - enemyDefense;
+
+        // Asegurar que el daño no sea negativo
+        return Math.max(finalDamage, 1); // El daño mínimo será 1
     }
 
     // Verifica ventaja de tipo
