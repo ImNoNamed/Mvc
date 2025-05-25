@@ -1,9 +1,6 @@
 package controller;
 
-import model.Entrenador;
-import model.Pokemon;
-import model.Ataque;
-
+import model.*;
 import java.util.Scanner;
 
 public class ControladorConsola {
@@ -65,11 +62,11 @@ public class ControladorConsola {
                 }
             }
 
-            entrenador1.eliminarPokemonActivo();
-            entrenador2.eliminarPokemonActivo();
-
-            if (!entrenador1.tienePokemonVivos() || !entrenador2.tienePokemonVivos()) {
-                break;
+            if (poke1.getHealthPoints() <= 0) {
+                System.out.println(poke1.getName() + " ha sido derrotado.");
+            }
+            if (poke2.getHealthPoints() <= 0) {
+                System.out.println(poke2.getName() + " ha sido derrotado.");
             }
         }
 

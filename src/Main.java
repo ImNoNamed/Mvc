@@ -1,4 +1,5 @@
 import controller.ControladorConsola;
+import controller.ControladorPokemon;
 import vista.InterfazGrafica;
 
 import java.util.Scanner;
@@ -17,9 +18,12 @@ public class Main {
         scanner.nextLine(); // Consumir el salto de línea
 
         if (opcion == 1) {
+            // Iniciar el modo consola
             new ControladorConsola().iniciarJuego();
         } else if (opcion == 2) {
-            new InterfazGrafica().iniciarJuego();
+            // Iniciar el modo interfaz gráfica
+            InterfazGrafica vista = new InterfazGrafica();
+            new ControladorPokemon(vista).iniciarInterfaz();
         } else {
             System.out.println("Opción no válida. Saliendo del programa.");
         }
