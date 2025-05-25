@@ -19,7 +19,6 @@ Este proyecto es un simulador de batallas Pokémon basado en *Programación Orie
 ## 🤝 *Integrantes del Proyecto*  
 * *📌 Isabella Arroyave López* (@isabellaArroyave) 
 * *📌 Juan Manuel Mejia Hernandez* (@ImNoNamed) 
-* *📌 Valeria Ramos Moreno* (@Val-2666) 
 
 ## 📜 *Licencia*  
 Este proyecto es solo para fines académicos.
