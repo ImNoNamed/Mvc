@@ -1,14 +1,24 @@
 package controller;
 
-import model.*;
 import java.util.Scanner;
+import model.*;
 
 public class ControladorConsola {
     private Entrenador entrenador1;
     private Entrenador entrenador2;
 
+    private void limpiarConsola() {
+    System.out.print("\033[H\033[2J");
+    System.out.flush();
+    }
+
     public void iniciarJuego() {
         Scanner scanner = new Scanner(System.in);
+
+    limpiarConsola();
+    System.out.println("=====================================");
+    System.out.println("  ** SIMLULADOR DE BATALLAS POKEMON **");
+    System.out.println("=====================================\n");
 
         System.out.print("Ingrese el nombre del Entrenador 1: ");
         String nombre1 = scanner.nextLine();
@@ -20,7 +30,7 @@ public class ControladorConsola {
 
         entrenador1.generarEquipoAleatorio();
         entrenador2.generarEquipoAleatorio();
-
+        
         System.out.println("\nEquipos generados:");
         mostrarEquipo(entrenador1);
         mostrarEquipo(entrenador2);
@@ -40,10 +50,14 @@ public class ControladorConsola {
 
     private void iniciarBatalla(Scanner scanner) {
         while (entrenador1.tienePokemonVivos() && entrenador2.tienePokemonVivos()) {
+            limpiarConsola();
+
             Pokemon poke1 = entrenador1.obtenerPokemonActivo();
             Pokemon poke2 = entrenador2.obtenerPokemonActivo();
 
+            System.out.println("=====================================");
             System.out.println("\nTurno de batalla:");
+            System.out.println("=======================================\n");
             System.out.println(entrenador1.getNombre() + " usa a " + poke1.getName() + " (HP: " + poke1.getHealthPoints() + ")");
             System.out.println(entrenador2.getNombre() + " usa a " + poke2.getName() + " (HP: " + poke2.getHealthPoints() + ")");
 
@@ -70,6 +84,7 @@ public class ControladorConsola {
             }
         }
 
+        limpiarConsola();
         if (entrenador1.tienePokemonVivos()) {
             System.out.println("\n¡" + entrenador1.getNombre() + " gana la batalla!");
         } else {
