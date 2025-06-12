@@ -1,12 +1,12 @@
-package modelo;
+package model;
 
 import java.util.HashMap;
 
 public class Pokedex {
-    private HashMap<String, Pokemon> pokemonesPorNombre = new HashMap<>();
+    private final HashMap<String, Pokemon> pokemonesPorNombre = new HashMap<>();
 
     public void agregarPokemon(Pokemon p) {
-        pokemonesPorNombre.put(p.getNombre().toLowerCase(), p);
+        pokemonesPorNombre.put(p.getName().toLowerCase(), p);
     }
 
     public Pokemon buscarPorNombre(String nombre) {

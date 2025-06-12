@@ -1,6 +1,6 @@
-import controller.ControladorConsola;
-import controller.ControladorPokemon;
 import java.util.Scanner;
+import controlador.ControladorConsola;
+import controlador.ControladorPokemon;
 import vista.InterfazGrafica;
 
 public class Main {
@@ -22,7 +22,7 @@ public class Main {
         } else if (opcion == 2) {
             // Iniciar el modo interfaz gráfica
             InterfazGrafica vista = new InterfazGrafica();
-            ControladorPokemon controlador = new ControladorPokemon(vista);
+            new ControladorPokemon(vista);
         } else {
             System.out.println("Opción no válida. Saliendo del programa.");
         }

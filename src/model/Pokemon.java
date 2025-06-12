@@ -89,6 +89,12 @@ public class Pokemon {
     public void recibirAtaque(Ataque ataque, Pokemon atacante) {
         int daño = ataque.calculateDamage(this.type, this.defense);
         this.subtractHp(daño);
-        System.out.println(atacante.getName() + " usó " + ataque.getdamagename() + " contra " + this.getName() + ". Hizo " + daño + " de daño.");
+        System.out.println(atacante.getName() + " usó " + ataque.getDamageName() + " contra " + this.getName() + ". Hizo " + daño + " de daño.");
+    }
+
+    public class PokemonDebilitadoException extends Exception {
+        public PokemonDebilitadoException(String mensaje) {
+            super(mensaje);
+        }
     }
 }

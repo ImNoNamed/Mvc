@@ -1,4 +1,4 @@
-package controller;
+package controlador;
 
 import java.util.Scanner;
 import model.*;
@@ -96,7 +96,7 @@ public class ControladorConsola {
         System.out.println("\nAtaques disponibles para " + pokemon.getName() + ":");
         for (int i = 0; i < pokemon.getAttacks().size(); i++) {
             Ataque ataque = pokemon.getAttacks().get(i);
-            System.out.println((i + 1) + ". " + ataque.getdamagename() + " (Daño: " + ataque.getdamagepotency() + ")");
+            System.out.println((i + 1) + ". " + ataque.getDamageName() + " (Daño: " + ataque.getDamagePotency() + ")");
         }
         System.out.print("Seleccione el ataque: ");
         int ataqueIndex = scanner.nextInt() - 1;
@@ -108,7 +108,7 @@ public class ControladorConsola {
         ataque.applyAttack(defensor);
         int daño = Math.max(hpAntes - defensor.getHealthPoints(), 0);
 
-        System.out.println("\n" + atacante.getName() + " usó " + ataque.getdamagename() + " contra " + defensor.getName());
+        System.out.println("\n" + atacante.getName() + " usó " + ataque.getDamageName() + " contra " + defensor.getName());
         System.out.println("Daño causado: " + daño);
         System.out.println(defensor.getName() + " ahora tiene " + defensor.getHealthPoints() + " HP.");
     }

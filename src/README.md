@@ -1,4 +1,3 @@
-  
 # *Simulador de Batallas Pokémon (Java MVC)*  
 Proyecto de Programación Orientada a Eventos en Java  
 
