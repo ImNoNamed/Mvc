@@ -62,7 +62,7 @@ public class Entrenador {
 
         for (int i = 0; i < 4 && i < ataquesDisponibles.size(); i++) {
             Ataque original = ataquesDisponibles.get(i);
-            Ataque copia = new Ataque(original.getdamagename(), original.getdamagetype(), original.getdamagepotency());
+            Ataque copia = new Ataque(original.getDamageName(), original.getDamageType(), original.getDamagePotency());
             pokemon.addAttack(copia);
         }
     }

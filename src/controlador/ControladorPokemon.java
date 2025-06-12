@@ -1,4 +1,4 @@
-package controller;
+package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -79,7 +79,7 @@ public class ControladorPokemon implements ActionListener {
 
     private Ataque buscarAtaque(Pokemon pokemon, String nombreAtaque) {
         for (Ataque ataque : pokemon.getAttacks()) {
-            if (ataque.getdamagename().equals(nombreAtaque)) {
+            if (ataque.getDamageName().equals(nombreAtaque)) {
                 return ataque;
             }
         }
@@ -90,8 +90,8 @@ public class ControladorPokemon implements ActionListener {
         int hpAntes = defensor.getHealthPoints();
         ataque.applyAttack(defensor);
 
-        vista.mostrarMensajeBatalla("\n🌟 " + atacante.getName() + " usó " + ataque.getdamagename() + " contra " + defensor.getName() + "\n");
-        vista.mostrarMensajeBatalla("⚔️ Daño base: " + ataque.getdamagepotency() + "\n");
+        vista.mostrarMensajeBatalla("\n🌟 " + atacante.getName() + " usó " + ataque.getDamageName() + " contra " + defensor.getName() + "\n");
+        vista.mostrarMensajeBatalla("⚔️ Daño base: " + ataque.getDamagePotency() + "\n");
 
         if (ataque.advantage(defensor.getType())) {
             vista.mostrarMensajeBatalla("💥 ¡Ataque con ventaja de tipo!\n");

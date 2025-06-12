@@ -12,15 +12,15 @@ public class Ataque {
     }
 
     // Getters
-    public String getdamagename() {
+    public String getDamageName() {
         return damagename;
     }
 
-    public String getdamagetype() {
+    public String getDamageType() {
         return damagetype;
     }
 
-    public int getdamagepotency() {
+    public int getDamagePotency() {
         return damagepotency;
     }
 
@@ -29,15 +29,15 @@ public class Ataque {
     }
 
     // Setters
-    public void setdamagename(String damagename) {
+    public void setDamageName(String damagename) {
         this.damagename = damagename;
     }
 
-    public void setdamagetype(String damagetype) {
+    public void setDamageType(String damagetype) {
         this.damagetype = damagetype;
     }
 
-    public void setdamagepotency(int damagepotency) {
+    public void setDamagePotency(int damagepotency) {
         this.damagepotency = damagepotency;
     }
 
@@ -72,6 +72,12 @@ public class Ataque {
         return (damagetype.equals("agua") && enemytype.equals("fuego")) ||
                (damagetype.equals("fuego") && enemytype.equals("planta")) ||
                (damagetype.equals("planta") && enemytype.equals("agua"));
+    }
+
+    public static class AtaqueNoDisponibleException extends Exception {
+        public AtaqueNoDisponibleException(String mensaje) {
+            super(mensaje);
+        }
     }
 }
 

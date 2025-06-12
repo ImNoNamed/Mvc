@@ -215,8 +215,8 @@ public void mostrarVentanaBatalla(String nombreEntrenador1, String nombreEntrena
     JPanel panelAtaques = new JPanel(new GridLayout(3, 2));
     comboAtaques1 = new JComboBox<>();
     comboAtaques2 = new JComboBox<>();
-    for (Ataque a : ataques1) comboAtaques1.addItem(a.getdamagename());
-    for (Ataque a : ataques2) comboAtaques2.addItem(a.getdamagename());
+    for (Ataque a : ataques1) comboAtaques1.addItem(a.getDamageName());
+    for (Ataque a : ataques2) comboAtaques2.addItem(a.getDamageName());
 
     botonTurno = new JButton("Ejecutar Turno");
     botonTurno.setFont(new Font("Arial", Font.BOLD, 14));
